@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
+        <!--<script src="js/three.js"></script>-->
+        <script src="http://mrdoob.github.com/three.js/build/three.min.js"></script>
+        <script src="./js/controls/PointerLockControls.js"></script>
+        
+		<script type="module">
+			const renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+
+            const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+            camera.position.set( 0, 0, 100 );
+            camera.lookAt( 0, 0, 0 );
+
+            const scene = new THREE.Scene();
+
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshPhongMaterial({color: 0xffffff, metalness: 1});
+            const cube = new THREE.Mesh( geometry, material );
+            scene.add( cube );
+
+            const light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
+            light.position.set( 0, 0, 100 );
+            scene.add( light );
+
+            camera.position.z = 5;
+
+            const movementSpeed = 0.1;
+
+            window.addEventListener('resize', function () {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }, false)
+
+            let moveForward = false;
+			let moveBackward = false;
+			let moveLeft = false;
+			let moveRight = false;
+			let canJump = false;
+
+            let controls = new THREE.PointerLockControls( camera, document.body );
+            window.addEventListener( 'click', function () {
+                controls.lock();
+            }, false );
+
+            scene.add( controls.getObject() );
+
+            const onKeyDown = function ( event ) {
+                switch ( event.keyCode ) {
+                    case 38: // up
+                    case 87: // w
+                        moveForward = true;
+                        break;
+                    case 37: // left
+                    case 65: // a
+                        moveLeft = true;
+                        break;
+                    case 40: // down
+                    case 83: // s
+                        moveBackward = true;
+                        break;
+                    case 39: // right
+                    case 68: // d
+                        moveRight = true;
+                        break;
+                }
+            };
+
+            const onKeyUp = function ( event ) {
+                switch ( event.keyCode ) {
+                    case 38: // up
+                    case 87: // w
+                        moveForward = false;
+                        break;
+                    case 37: // left
+                    case 65: // a
+                        moveLeft = false;
+                        break;
+                    case 40: // down
+                    case 83: // s
+                        moveBackward = false;
+                        break;
+                    case 39: // right
+                    case 68: // d
+                        moveRight = false;
+                        break;
+                }
+            };
+
+            cube.rotation.x = 0.3;
+
+            function animate() {
+                requestAnimationFrame( animate );
+                renderer.render( scene, camera );
+                cube.rotation.y += 0.01;
+
+                /*if (controls.isLocked === true) {
+                    if (moveForward == true) { controls.moveForward(movementSpeed); }
+                    if (moveBackward == true) { controls.moveBackward(movementSpeed); }
+                    if (moveLeft == true) { controls.moveLeft(movementSpeed); }
+                    if (moveRight == true) { controls.moveRight(movementSpeed); }
+                }*/
+            }
+            animate();
+		</script>
+	</body>
+</html>

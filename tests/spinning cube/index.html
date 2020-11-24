@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
+        <script src="../../build/three.min.js"></script>
+		<script>
+			const renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+
+            const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+            camera.position.set( 0, 0, 100 );
+            camera.lookAt( 0, 0, 0 );
+
+            const scene = new THREE.Scene();
+
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshPhongMaterial({color: 0xffffff, metalness: 1});
+            const cube = new THREE.Mesh( geometry, material );
+            scene.add( cube );
+
+            
+            const light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
+            light.position.set( 0, 0, 100 );
+            scene.add( light );
+
+
+            camera.position.z = 5;
+
+            cube.rotation.x = 0.3;
+
+            function animate() {
+                requestAnimationFrame( animate );
+                renderer.render( scene, camera );
+                cube.rotation.y += 0.01;
+            }
+            animate();
+
+            window.addEventListener('resize', function () {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }, false)
+		</script>
+	</body>
+</html>
