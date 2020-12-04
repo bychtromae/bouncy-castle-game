@@ -20,24 +20,31 @@
             camera.lookAt( 0, 0, 0 );
 
             const scene = new THREE.Scene();
-
-            const geometry = new THREE.BoxGeometry();
             const material = new THREE.MeshPhongMaterial({color: 0xffffff, metalness: 1});
-            const cube = new THREE.Mesh( geometry, material );
-            scene.add( cube );
 
             const light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
             light.position.set( 0, 0, 100 );
             scene.add( light );
 
             camera.position.z = 5;
+            camera.position.x = 0;
+            let t = 0;
 
-            cube.rotation.x = 0.3;
+            let character = {
+                torso: new THREE.Mesh(new THREE.BoxGeometry(1,0.85,1), material),
+                lHand: new THREE.Mesh(new THREE.BoxGeometry(0.1,0.1,0.5), material)
+            }
+            scene.add(character.torso);
+            scene.add(character.lHand);
+            character.lHand.position.x = -1;
 
             function animate() {
                 requestAnimationFrame( animate );
                 renderer.render( scene, camera );
-                cube.rotation.y += 0.01;
+                camera.position.z = Math.cos(t)*5;
+                camera.position.x = -Math.sin(t)*5;
+                t+=0.01;
+                camera.lookAt(0,0,0);
             }
             animate();
 
