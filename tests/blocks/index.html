@@ -10,6 +10,7 @@
 	</head>
 	<body>
         <script src="../../build/three.min.js"></script>
+        <script src="blocks.js"></script>
 		<script>
 			const renderer = new THREE.WebGLRenderer();
             renderer.setSize( window.innerWidth, window.innerHeight );
@@ -29,8 +30,35 @@
 
             camera.position.z = 5;
             camera.position.x = 0;
-
             let t = 0;
+
+            let character = {
+                torso: new THREE.Mesh(new THREE.BoxGeometry(1,0.85,1), torsoMaterial),
+                lHand: new THREE.Mesh(new THREE.BoxGeometry(0.5,0.1,0.5), torsoMaterial),
+                rHand: new THREE.Mesh(new THREE.BoxGeometry(0.5,0.1,0.5), torsoMaterial),
+                lFoot: new THREE.Mesh(new THREE.BoxGeometry(0.3,0.1,0.5), torsoMaterial),
+                rFoot: new THREE.Mesh(new THREE.BoxGeometry(0.3,0.1,0.5), torsoMaterial),
+                lEye: new THREE.Mesh(new THREE.BoxGeometry(0.2,0.4,0.3), eyeMaterial),
+                rEye: new THREE.Mesh(new THREE.BoxGeometry(0.2,0.4,0.3), eyeMaterial)
+            }
+            scene.add(character.torso);
+            scene.add(character.lHand);
+            scene.add(character.rHand);
+            scene.add(character.lFoot);
+            scene.add(character.rFoot);
+            scene.add(character.lEye);
+            scene.add(character.rEye);
+            character.lHand.position.x = -0.8;
+            character.lHand.rotation.set(0,0,1);
+            character.rHand.position.x = 0.8;
+            character.rHand.rotation.set(0,0,-1);
+            character.lFoot.position.y = -0.7;
+            character.lFoot.position.x = -0.2;
+            character.rFoot.position.y = -0.7;
+            character.rFoot.position.x = 0.2;
+            character.lEye.position.set(-0.15,0.1,0.5);
+            character.rEye.position.set(0.15,0.1,0.5);
+
             function animate() {
                 requestAnimationFrame( animate );
                 renderer.render( scene, camera );
