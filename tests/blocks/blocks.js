@@ -117,5 +117,45 @@ let blocks = {
             new THREE.Face3(7,8,9)
         );
         this.side.geom.computeFaceNormals();
+
+        this.stair.geom.vertices.push(
+            new THREE.Vector3(0,0,0), //0
+            new THREE.Vector3(1,0,0), //1 
+            new THREE.Vector3(0,0,1), //2
+            new THREE.Vector3(1,0,1), //3
+            new THREE.Vector3(0,1,0), //4
+            new THREE.Vector3(1,0.5,0), //5
+            new THREE.Vector3(0,1,1), //6
+            new THREE.Vector3(1,0.5,1), //7
+            new THREE.Vector3(0.5,0.5,0), //8
+            new THREE.Vector3(0.5,0.5,1), //9
+            new THREE.Vector3(0,0.5,0), //10
+            new THREE.Vector3(0,0.5,1), //11
+            new THREE.Vector3(0.5,1,0), //12
+            new THREE.Vector3(0.5,1,1), //13
+        );
+        this.stair.geom.faces.push( 
+            new THREE.Face3(0,1,3),
+            new THREE.Face3(0,2,3),
+            new THREE.Face3(0,1,5),
+            new THREE.Face3(0,10,5),
+            new THREE.Face3(1,3,7),
+            new THREE.Face3(1,5,7),
+            new THREE.Face3(0,2,6),
+            new THREE.Face3(0,4,6),
+            new THREE.Face3(2,11,7),
+            new THREE.Face3(2,3,7),
+            new THREE.Face3(8,5,7),
+            new THREE.Face3(8,9,7),
+            new THREE.Face3(4,10,8),
+            new THREE.Face3(4,12,8),
+            new THREE.Face3(6,11,9),
+            new THREE.Face3(6,13,9),
+            new THREE.Face3(12,13,9),
+            new THREE.Face3(9,12,8),
+            new THREE.Face3(4,6,12),
+            new THREE.Face3(13,12,6)
+        );
+        this.stair.geom.computeFaceNormals();
     }
 }
