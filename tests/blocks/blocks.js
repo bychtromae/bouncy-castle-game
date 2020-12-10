@@ -7,6 +7,10 @@ let blocks = {
         geom: new THREE.Geometry(),
         material: new THREE.MeshStandardMaterial({side: THREE.DoubleSide})
     },
+    corner: {
+        geom: new THREE.Geometry(),
+        material: new THREE.MeshStandardMaterial({side: THREE.DoubleSide})
+    },
     stair: {
         geom: new THREE.Geometry(),
         material: new THREE.MeshStandardMaterial({side: THREE.DoubleSide})
@@ -58,6 +62,10 @@ let blocks = {
     wallceilingcorner: {
         geom: new THREE.Geometry(),
         material: new THREE.MeshStandardMaterial({side: THREE.DoubleSide})
+    },
+    air: {
+        geom: null,
+        material: null
     },
     makeGeometries: function () {
         this.flat.geom.vertices.push(
@@ -118,6 +126,43 @@ let blocks = {
             new THREE.Face3(7,8,9)
         );
         this.side.geom.computeFaceNormals();
+
+
+        this.corner.geom.vertices.push(
+            new THREE.Vector3(0,0,0.75), //0 base
+            new THREE.Vector3(0.25,0,0.75), //1 
+            new THREE.Vector3(0,0,1), //2
+            new THREE.Vector3(0.25,0,1), //3
+            new THREE.Vector3(0,0.25,0.5), //4 middle
+            new THREE.Vector3(0.5,0.25,0.5), //5
+            new THREE.Vector3(0,0.25,1), //6
+            new THREE.Vector3(0.5,0.25,1), //7
+            new THREE.Vector3(0,0.5,0.75), //8 top
+            new THREE.Vector3(0.25,0.5,0.75), //9
+            new THREE.Vector3(0,0.5,1), //10
+            new THREE.Vector3(0.25,0.5,1), //11
+        );
+        this.corner.geom.faces.push( 
+            new THREE.Face3(0,1,3), //base
+            new THREE.Face3(0,2,3), 
+            new THREE.Face3(2,0,8), //back left square
+            new THREE.Face3(2,10,8),
+            new THREE.Face3(0,4,8), //back left triangle
+            new THREE.Face3(10,11,3), //back right square
+            new THREE.Face3(10,2,3), 
+            new THREE.Face3(11,7,3), //back right triangle
+            new THREE.Face3(0,4,5), //wedge left bottom
+            new THREE.Face3(0,1,5), 
+            new THREE.Face3(4,8,9), //wedge left top
+            new THREE.Face3(4,5,9), 
+            new THREE.Face3(1,5,7), //wedge right bottom
+            new THREE.Face3(1,3,7), 
+            new THREE.Face3(5,9,11), //wedge right top
+            new THREE.Face3(5,7,11), 
+            new THREE.Face3(8,10,11), //top
+            new THREE.Face3(8,9,11)
+        );
+        this.corner.geom.computeFaceNormals();
 
 
         this.stair.geom.vertices.push(
@@ -293,7 +338,14 @@ let blocks = {
 
 
         this.pillar.geom.vertices.push(
-            
+            new THREE.Vector3(0.33,0,0.33), //0
+            new THREE.Vector3(0.66,0,0.33), //1
+            new THREE.Vector3(0.33,0,0.66), //2
+            new THREE.Vector3(0.66,0,0.66), //3
+            new THREE.Vector3(0.33,1,0.33), //4
+            new THREE.Vector3(0.66,1,0.33), //5
+            new THREE.Vector3(0.33,1,0.66), //6
+            new THREE.Vector3(0.66,1,0.66), //7
         );
         this.pillar.geom.faces.push( 
             

@@ -32,10 +32,12 @@
 
             for (let i = 0; i < Object.keys(blocks).length; i++) {
                 let blockPrototype = blocks[Object.keys(blocks)[i]];
-                let block = new THREE.Mesh(blockPrototype.geom, blockPrototype.material);
-                scene.add(block);
-                block.position.z = -(i % 4) * 1.5;
-                block.position.x = Math.floor(i / 4) * 1.5;
+                if (blockPrototype.geom != null) {
+                    let block = new THREE.Mesh(blockPrototype.geom, blockPrototype.material);
+                    scene.add(block);
+                    block.position.z = -(i % 4) * 1.5;
+                    block.position.x = Math.floor(i / 4) * 1.5;
+                }
             }
 
             function animate() {
