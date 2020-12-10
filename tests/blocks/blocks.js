@@ -348,7 +348,18 @@ let blocks = {
             new THREE.Vector3(0.66,1,0.66), //7
         );
         this.pillar.geom.faces.push( 
-            
+            new THREE.Face3(0,1,3),
+            new THREE.Face3(0,2,3),
+            new THREE.Face3(0,1,5),
+            new THREE.Face3(0,4,5),
+            new THREE.Face3(1,3,7),
+            new THREE.Face3(1,5,7),
+            new THREE.Face3(0,2,6),
+            new THREE.Face3(0,4,6),
+            new THREE.Face3(2,6,7),
+            new THREE.Face3(2,3,7),
+            new THREE.Face3(4,5,7),
+            new THREE.Face3(4,6,7)
         );
         this.pillar.geom.computeFaceNormals();
 
