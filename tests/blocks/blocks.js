@@ -209,10 +209,46 @@ let blocks = {
 
 
         this.pillarbase.geom.vertices.push(
-            
+            new THREE.Vector3(0,0,0), //0
+            new THREE.Vector3(1,0,0), //1
+            new THREE.Vector3(0,0,1), //2
+            new THREE.Vector3(1,0,1), //3
+            new THREE.Vector3(0,0.5,0), //4
+            new THREE.Vector3(1,0.5,0), //5
+            new THREE.Vector3(0,0.5,1), //6
+            new THREE.Vector3(1,0.5,1), //7
+            new THREE.Vector3(0.33,0.5,0.33), //8
+            new THREE.Vector3(0.66,0.5,0.33), //9
+            new THREE.Vector3(0.33,0.5,0.66), //10
+            new THREE.Vector3(0.66,0.5,0.66), //11
+            new THREE.Vector3(0.33,1,0.33), //12
+            new THREE.Vector3(0.66,1,0.33), //13
+            new THREE.Vector3(0.33,1,0.66), //14
+            new THREE.Vector3(0.66,1,0.66) //15
         );
         this.pillarbase.geom.faces.push( 
-            
+            new THREE.Face3(0,1,3), //base botton
+            new THREE.Face3(0,2,3),
+            new THREE.Face3(0,4,5), //base front left
+            new THREE.Face3(0,1,5),
+            new THREE.Face3(0,4,6), //base back left
+            new THREE.Face3(0,2,6),
+            new THREE.Face3(1,5,7), //base front right
+            new THREE.Face3(1,3,7),
+            new THREE.Face3(3,7,6), //base back right
+            new THREE.Face3(3,2,6),
+            new THREE.Face3(4,5,7), //base top
+            new THREE.Face3(4,6,7),
+            new THREE.Face3(8,12,13), //pillar front left
+            new THREE.Face3(8,9,13),
+            new THREE.Face3(8,10,14), //pillar back lfet
+            new THREE.Face3(8,12,14),
+            new THREE.Face3(9,13,15), //pillar front right
+            new THREE.Face3(9,11,15),
+            new THREE.Face3(11,15,14), //pillar back right
+            new THREE.Face3(11,10,14),
+            new THREE.Face3(12,14,15), //pillar top
+            new THREE.Face3(12,13,15),
         );
         this.pillarbase.geom.computeFaceNormals();
 
