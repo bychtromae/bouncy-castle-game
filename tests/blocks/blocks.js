@@ -254,10 +254,40 @@ let blocks = {
 
 
         this.pillarbase2.geom.vertices.push(
-            
+            new THREE.Vector3(0.33,0,0.33), //0
+            new THREE.Vector3(0.66,0,0.33), //1
+            new THREE.Vector3(0.33,0,0.66), //2
+            new THREE.Vector3(0.66,0,0.66), //3
+            new THREE.Vector3(0.33,0.66,0.33), //4
+            new THREE.Vector3(0.66,0.66,0.33), //5
+            new THREE.Vector3(0.33,0.66,0.66), //6
+            new THREE.Vector3(0.66,0.66,0.66), //7
+            new THREE.Vector3(0,1,0), //8
+            new THREE.Vector3(1,1,0), //9
+            new THREE.Vector3(0,1,1), //10
+            new THREE.Vector3(1,1,1), //11
         );
         this.pillarbase2.geom.faces.push( 
-            
+            new THREE.Face3(0,1,3), //pillar botton
+            new THREE.Face3(0,2,3),
+            new THREE.Face3(0,1,5), //pillar front left
+            new THREE.Face3(0,4,5),
+            new THREE.Face3(0,4,6), //pillar back left
+            new THREE.Face3(0,2,6),
+            new THREE.Face3(1,5,7), //pillar front right
+            new THREE.Face3(1,3,7),
+            new THREE.Face3(3,7,6), //pillar back right
+            new THREE.Face3(3,2,6),
+            new THREE.Face3(8,4,5), //ceiling front left
+            new THREE.Face3(8,9,5),
+            new THREE.Face3(8,10,6), //ceiling back left
+            new THREE.Face3(8,4,6),
+            new THREE.Face3(9,5,7), //ceiling front right
+            new THREE.Face3(9,11,7),
+            new THREE.Face3(11,7,6), //ceiling back right
+            new THREE.Face3(11,10,6),
+            new THREE.Face3(8,10,11), //ceiling top
+            new THREE.Face3(8,9,11)
         );
         this.pillarbase2.geom.computeFaceNormals();
 
