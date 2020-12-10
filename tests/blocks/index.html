@@ -17,47 +17,28 @@
             document.body.appendChild( renderer.domElement );
 
             const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
-            camera.position.set( 0, 0, 100 );
+            camera.position.set( 0, 3, 100 );
             camera.lookAt( 0, 0, 0 );
 
             const scene = new THREE.Scene();
-            const torsoMaterial = new THREE.MeshPhongMaterial({color: 0xffffff});
-            const eyeMaterial = new THREE.MeshPhongMaterial({color: 0x333333});
 
             const light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
-            light.position.set( 0, 0, 100 );
+            light.position.set( 0, 50, 100 );
             scene.add( light );
 
             camera.position.z = 5;
             camera.position.x = 0;
             let t = 0;
 
-            let character = {
-                torso: new THREE.Mesh(new THREE.BoxGeometry(1,0.85,1), torsoMaterial),
-                lHand: new THREE.Mesh(new THREE.BoxGeometry(0.5,0.1,0.5), torsoMaterial),
-                rHand: new THREE.Mesh(new THREE.BoxGeometry(0.5,0.1,0.5), torsoMaterial),
-                lFoot: new THREE.Mesh(new THREE.BoxGeometry(0.3,0.1,0.5), torsoMaterial),
-                rFoot: new THREE.Mesh(new THREE.BoxGeometry(0.3,0.1,0.5), torsoMaterial),
-                lEye: new THREE.Mesh(new THREE.BoxGeometry(0.2,0.4,0.3), eyeMaterial),
-                rEye: new THREE.Mesh(new THREE.BoxGeometry(0.2,0.4,0.3), eyeMaterial)
+            blocks.makeGeometries();
+
+            for (let i = 0; i < Object.keys(blocks).length; i++) {
+                let blockPrototype = blocks[Object.keys(blocks)[i]];
+                let block = new THREE.Mesh(blockPrototype.geom, blockPrototype.material);
+                scene.add(block);
+                block.position.x = i % 4;
+                block.position.z = Math.floor(i / 4);
             }
-            scene.add(character.torso);
-            scene.add(character.lHand);
-            scene.add(character.rHand);
-            scene.add(character.lFoot);
-            scene.add(character.rFoot);
-            scene.add(character.lEye);
-            scene.add(character.rEye);
-            character.lHand.position.x = -0.8;
-            character.lHand.rotation.set(0,0,1);
-            character.rHand.position.x = 0.8;
-            character.rHand.rotation.set(0,0,-1);
-            character.lFoot.position.y = -0.7;
-            character.lFoot.position.x = -0.2;
-            character.rFoot.position.y = -0.7;
-            character.rFoot.position.x = 0.2;
-            character.lEye.position.set(-0.15,0.1,0.5);
-            character.rEye.position.set(0.15,0.1,0.5);
 
             function animate() {
                 requestAnimationFrame( animate );
