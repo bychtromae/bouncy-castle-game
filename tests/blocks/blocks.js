@@ -458,10 +458,40 @@ let blocks = {
 
 
         this.wallcorner.geom.vertices.push(
-            
+            new THREE.Vector3(0,0,0), //0
+            new THREE.Vector3(0.5,0,0), //1
+            new THREE.Vector3(0,0,1), //2
+            new THREE.Vector3(0.5,0,0.5), //3
+            new THREE.Vector3(1,0,0.5), //4
+            new THREE.Vector3(1,0,1), //5
+            new THREE.Vector3(0,1,0), //6
+            new THREE.Vector3(0.5,1,0), //7
+            new THREE.Vector3(0,1,1), //8
+            new THREE.Vector3(0.5,1,0.5), //9
+            new THREE.Vector3(1,1,0.5), //10
+            new THREE.Vector3(1,1,1), //11
         );
         this.wallcorner.geom.faces.push( 
-            
+            new THREE.Face3(0,1,3), //base left
+            new THREE.Face3(0,2,3),
+            new THREE.Face3(5,4,3), //base right
+            new THREE.Face3(5,2,3),
+            new THREE.Face3(0,6,8), //back left
+            new THREE.Face3(0,2,8),
+            new THREE.Face3(5,11,8), //back right
+            new THREE.Face3(5,2,8),
+            new THREE.Face3(0,1,7), //edge left
+            new THREE.Face3(0,6,7),
+            new THREE.Face3(5,4,10), //edge right
+            new THREE.Face3(5,11,10),
+            new THREE.Face3(1,7,9), //center left
+            new THREE.Face3(1,3,9),
+            new THREE.Face3(9,3,4), //center right
+            new THREE.Face3(9,10,4),
+            new THREE.Face3(6,7,9), //top left
+            new THREE.Face3(6,8,9),
+            new THREE.Face3(11,10,9), //top right
+            new THREE.Face3(11,8,9),
         );
         this.wallcorner.geom.computeFaceNormals();
 
