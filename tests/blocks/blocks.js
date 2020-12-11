@@ -140,7 +140,7 @@ let blocks = {
             new THREE.Vector3(0,0.5,0.75), //8 top
             new THREE.Vector3(0.25,0.5,0.75), //9
             new THREE.Vector3(0,0.5,1), //10
-            new THREE.Vector3(0.25,0.5,1), //11
+            new THREE.Vector3(0.25,0.5,1) //11
         );
         this.corner.geom.faces.push( 
             new THREE.Face3(0,1,3), //base
@@ -179,7 +179,7 @@ let blocks = {
             new THREE.Vector3(0,0.5,0), //10
             new THREE.Vector3(0,0.5,1), //11
             new THREE.Vector3(0.5,1,0), //12
-            new THREE.Vector3(0.5,1,1), //13
+            new THREE.Vector3(0.5,1,1) //13
         );
         this.stair.geom.faces.push( 
             new THREE.Face3(0,1,3),
@@ -248,7 +248,7 @@ let blocks = {
             new THREE.Face3(12,13,14), //center right
             new THREE.Face3(12,15,14),
             new THREE.Face3(13,8,9), //center bottom
-            new THREE.Face3(13,14,9),
+            new THREE.Face3(13,14,9)
         );
         this.staircorner.geom.computeFaceNormals();
 
@@ -293,7 +293,7 @@ let blocks = {
             new THREE.Face3(11,15,14), //pillar back right
             new THREE.Face3(11,10,14),
             new THREE.Face3(12,14,15), //pillar top
-            new THREE.Face3(12,13,15),
+            new THREE.Face3(12,13,15)
         );
         this.pillarbase.geom.computeFaceNormals();
 
@@ -310,7 +310,7 @@ let blocks = {
             new THREE.Vector3(0,1,0), //8
             new THREE.Vector3(1,1,0), //9
             new THREE.Vector3(0,1,1), //10
-            new THREE.Vector3(1,1,1), //11
+            new THREE.Vector3(1,1,1) //11
         );
         this.pillarbase2.geom.faces.push( 
             new THREE.Face3(0,1,3), //pillar botton
@@ -345,7 +345,7 @@ let blocks = {
             new THREE.Vector3(0.33,1,0.33), //4
             new THREE.Vector3(0.66,1,0.33), //5
             new THREE.Vector3(0.33,1,0.66), //6
-            new THREE.Vector3(0.66,1,0.66), //7
+            new THREE.Vector3(0.66,1,0.66) //7
         );
         this.pillar.geom.faces.push( 
             new THREE.Face3(0,1,3),
@@ -374,7 +374,7 @@ let blocks = {
             new THREE.Vector3(0.33,0.33,0.66), //6
             new THREE.Vector3(0.66,0.33,0.66), //7
             new THREE.Vector3(0.33,0.5,0.5), //8
-            new THREE.Vector3(0.66,0.5,0.5), //9
+            new THREE.Vector3(0.66,0.5,0.5) //9
         );
         this.pillarend.geom.faces.push( 
             new THREE.Face3(0,1,3), //base
@@ -392,7 +392,7 @@ let blocks = {
             new THREE.Face3(4,8,9), //wedge square front
             new THREE.Face3(4,5,9),
             new THREE.Face3(8,9,7), //wedge square back
-            new THREE.Face3(8,6,7),
+            new THREE.Face3(8,6,7)
         );
         this.pillarend.geom.computeFaceNormals();
 
@@ -407,7 +407,7 @@ let blocks = {
             new THREE.Vector3(0.33,1,0.33), //6
             new THREE.Vector3(0.66,1,0.33), //7
             new THREE.Vector3(0.33,1,0.66), //8
-            new THREE.Vector3(0.66,1,0.66), //9
+            new THREE.Vector3(0.66,1,0.66) //9
         );
         this.pillarend2.geom.faces.push( 
             new THREE.Face3(2,0,4), //wedge triangle back
@@ -425,7 +425,7 @@ let blocks = {
             new THREE.Face3(8,9,5), //pillar back right
             new THREE.Face3(8,4,5),
             new THREE.Face3(8,6,7), //cieling
-            new THREE.Face3(8,9,7),
+            new THREE.Face3(8,9,7)
         );
         this.pillarend2.geom.computeFaceNormals();
 
@@ -469,7 +469,7 @@ let blocks = {
             new THREE.Vector3(0,1,1), //8
             new THREE.Vector3(0.5,1,0.5), //9
             new THREE.Vector3(1,1,0.5), //10
-            new THREE.Vector3(1,1,1), //11
+            new THREE.Vector3(1,1,1) //11
         );
         this.wallcorner.geom.faces.push( 
             new THREE.Face3(0,1,3), //base left
@@ -491,24 +491,76 @@ let blocks = {
             new THREE.Face3(6,7,9), //top left
             new THREE.Face3(6,8,9),
             new THREE.Face3(11,10,9), //top right
-            new THREE.Face3(11,8,9),
+            new THREE.Face3(11,8,9)
         );
         this.wallcorner.geom.computeFaceNormals();
 
 
         this.walltop.geom.vertices.push(
-            
+            new THREE.Vector3(0,0,0), //0
+            new THREE.Vector3(0.5,0,0), //1
+            new THREE.Vector3(0,0,1), //2
+            new THREE.Vector3(0.5,0,1), //3
+            new THREE.Vector3(0,0.25,0), //4
+            new THREE.Vector3(0.5,0.25,0), //5
+            new THREE.Vector3(0,0.25,1), //6
+            new THREE.Vector3(0.5,0.25,1), //7
+            new THREE.Vector3(0.25,0.5,0), //8
+            new THREE.Vector3(0.25,0.5,1) //9
         );
         this.walltop.geom.faces.push( 
-            
+            new THREE.Face3(0,1,3), //base bottom
+            new THREE.Face3(0,2,3),
+            new THREE.Face3(0,4,5), //base front left
+            new THREE.Face3(0,1,5),
+            new THREE.Face3(0,4,6), //base back left
+            new THREE.Face3(0,2,6),
+            new THREE.Face3(5,1,3), //base front right
+            new THREE.Face3(5,7,3),
+            new THREE.Face3(6,7,3), //base back right
+            new THREE.Face3(6,2,3),
+            new THREE.Face3(4,8,5), //wedge triangle left
+            new THREE.Face3(6,7,9), //wedge triangle right
+            new THREE.Face3(5,8,9), //wedge rectangle front
+            new THREE.Face3(5,7,9),
+            new THREE.Face3(4,8,9), //wedge rectangle back
+            new THREE.Face3(4,6,9)
         );
+        
         this.walltop.geom.computeFaceNormals();
         
 
         this.walltopcorner.geom.vertices.push(
-            
+            new THREE.Vector3(0,0,0), //0
+            new THREE.Vector3(0.5,0,0), //1
+            new THREE.Vector3(0,0,1), //2
+            new THREE.Vector3(0.5,0,0.5), //3
+            new THREE.Vector3(1,0,0.5), //4
+            new THREE.Vector3(1,0,1), //5
+            new THREE.Vector3(0,0.25,0), //6
+            new THREE.Vector3(0.5,0.25,0), //7
+            new THREE.Vector3(0,0.25,1), //8
+            new THREE.Vector3(0.5,0.25,0.5), //9
+            new THREE.Vector3(1,0.25,0.5), //10
+            new THREE.Vector3(1,0.25,1) //11
         );
         this.walltopcorner.geom.faces.push( 
+            new THREE.Face3(0,1,3), //base left
+            new THREE.Face3(0,2,3),
+            new THREE.Face3(5,4,3), //base right
+            new THREE.Face3(5,2,3),
+            new THREE.Face3(0,6,8), //back left
+            new THREE.Face3(0,2,8),
+            new THREE.Face3(5,11,8), //back right
+            new THREE.Face3(5,2,8),
+            new THREE.Face3(0,1,7), //edge left
+            new THREE.Face3(0,6,7),
+            new THREE.Face3(5,4,10), //edge right
+            new THREE.Face3(5,11,10),
+            new THREE.Face3(1,7,9), //center left
+            new THREE.Face3(1,3,9),
+            new THREE.Face3(9,3,4), //center right
+            new THREE.Face3(9,10,4),
             
         );
         this.walltopcorner.geom.computeFaceNormals();
