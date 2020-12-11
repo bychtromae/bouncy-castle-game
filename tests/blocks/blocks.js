@@ -398,10 +398,34 @@ let blocks = {
 
 
         this.pillarend2.geom.vertices.push(
-            
+            new THREE.Vector3(0.33,0.5,0.5), //0
+            new THREE.Vector3(0.66,0.5,0.5), //1
+            new THREE.Vector3(0.33,0.66,0.33), //2
+            new THREE.Vector3(0.66,0.66,0.33), //3
+            new THREE.Vector3(0.33,0.66,0.66), //4
+            new THREE.Vector3(0.66,0.66,0.66), //5
+            new THREE.Vector3(0.33,1,0.33), //6
+            new THREE.Vector3(0.66,1,0.33), //7
+            new THREE.Vector3(0.33,1,0.66), //8
+            new THREE.Vector3(0.66,1,0.66), //9
         );
         this.pillarend2.geom.faces.push( 
-            
+            new THREE.Face3(2,0,4), //wedge triangle back
+            new THREE.Face3(3,1,5), //wedge triangle front
+            new THREE.Face3(2,0,1), //wedge square front
+            new THREE.Face3(2,3,1),
+            new THREE.Face3(1,5,4), //wedge square back
+            new THREE.Face3(1,0,4),
+            new THREE.Face3(6,2,3), //pillar front left
+            new THREE.Face3(6,7,3),
+            new THREE.Face3(6,8,4), //pillar back left
+            new THREE.Face3(6,2,4),
+            new THREE.Face3(7,3,5), //pillar front right
+            new THREE.Face3(7,9,5),
+            new THREE.Face3(8,9,5), //pillar back right
+            new THREE.Face3(8,4,5),
+            new THREE.Face3(8,6,7), //cieling
+            new THREE.Face3(8,9,7),
         );
         this.pillarend2.geom.computeFaceNormals();
 
