@@ -431,10 +431,28 @@ let blocks = {
 
 
         this.wall.geom.vertices.push(
-            
+            new THREE.Vector3(0,0,0), //0
+            new THREE.Vector3(0.5,0,0), //1 
+            new THREE.Vector3(0,0,1), //2
+            new THREE.Vector3(0.5,0,1), //3
+            new THREE.Vector3(0,1,0), //4
+            new THREE.Vector3(0.5,1,0), //5
+            new THREE.Vector3(0,1,1), //6
+            new THREE.Vector3(0.5,1,1) //7
         );
         this.wall.geom.faces.push( 
-            
+            new THREE.Face3(0,1,3),
+            new THREE.Face3(0,2,3),
+            new THREE.Face3(0,1,5), 
+            new THREE.Face3(0,4,5),
+            new THREE.Face3(1,3,7),
+            new THREE.Face3(1,5,7),
+            new THREE.Face3(0,2,6),
+            new THREE.Face3(0,4,6),
+            new THREE.Face3(2,6,7),
+            new THREE.Face3(2,3,7),
+            new THREE.Face3(4,5,7),
+            new THREE.Face3(4,6,7)
         );
         this.wall.geom.computeFaceNormals();
 
