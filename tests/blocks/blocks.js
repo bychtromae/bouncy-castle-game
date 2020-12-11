@@ -573,25 +573,91 @@ let blocks = {
             new THREE.Face3(13,9,10), //wedge rectangle right front
             new THREE.Face3(13,14,10),
             new THREE.Face3(13,14,11), //wedge rectangle right back
-            new THREE.Face3(13,8,11),
+            new THREE.Face3(13,8,11)
         );
         this.walltopcorner.geom.computeFaceNormals();
 
 
         this.wallceiling.geom.vertices.push(
-            
+            new THREE.Vector3(0,0,0), //0
+            new THREE.Vector3(0.5,0,0), //1
+            new THREE.Vector3(0,0,1), //2
+            new THREE.Vector3(0.5,0,1), //3
+            new THREE.Vector3(0,0.5,0), //4
+            new THREE.Vector3(0.5,0.5,0), //5
+            new THREE.Vector3(0,0.5,1), //6
+            new THREE.Vector3(0.5,0.5,1), //7
+            new THREE.Vector3(0,1,0), //8
+            new THREE.Vector3(1,1,0), //9
+            new THREE.Vector3(0,1,1), //10
+            new THREE.Vector3(1,1,1) //11
         );
         this.wallceiling.geom.faces.push( 
-            
+            new THREE.Face3(0,1,3), //base bottom
+            new THREE.Face3(0,2,3),
+            new THREE.Face3(4,0,1), //base front left
+            new THREE.Face3(4,5,1),
+            new THREE.Face3(0,8,10), //base back
+            new THREE.Face3(0,2,10),
+            new THREE.Face3(1,5,7), //base front right
+            new THREE.Face3(1,3,7),
+            new THREE.Face3(6,7,3), //base back right
+            new THREE.Face3(6,2,3),
+            new THREE.Face3(8,4,5), //ceiling left front
+            new THREE.Face3(8,9,5),
+            new THREE.Face3(5,9,11), //ceiling right front
+            new THREE.Face3(5,7,11),
+            new THREE.Face3(6,7,11), //ceiling right back
+            new THREE.Face3(6,10,11),
+            new THREE.Face3(8,9,11), //ceiling top
+            new THREE.Face3(8,10,11)
         );
         this.wallceiling.geom.computeFaceNormals();
 
 
         this.wallceilingcorner.geom.vertices.push(
-            
+            new THREE.Vector3(0,0,0), //0
+            new THREE.Vector3(0.5,0,0), //1
+            new THREE.Vector3(0,0,1), //2
+            new THREE.Vector3(0.5,0,0.5), //3
+            new THREE.Vector3(1,0,0.5), //4
+            new THREE.Vector3(1,0,1), //5
+            new THREE.Vector3(0,0.5,0), //6
+            new THREE.Vector3(0.5,0.5,0), //7
+            new THREE.Vector3(0,0.5,1), //8
+            new THREE.Vector3(0.5,0.5,0.5), //9
+            new THREE.Vector3(1,0.5,0.5), //10
+            new THREE.Vector3(1,0.5,1), //11
+            new THREE.Vector3(0,1,0), //12
+            new THREE.Vector3(1,1,0), //13
+            new THREE.Vector3(0,1,1), //14
+            new THREE.Vector3(1,1,1) //15
         );
         this.wallceilingcorner.geom.faces.push( 
-            
+            new THREE.Face3(0,1,3), //base bottom left
+            new THREE.Face3(0,2,3),
+            new THREE.Face3(5,4,3), //base bottom right
+            new THREE.Face3(5,2,3),
+            new THREE.Face3(0,12,14), //back left
+            new THREE.Face3(0,2,14),
+            new THREE.Face3(5,15,14), //back right
+            new THREE.Face3(5,2,14),
+            new THREE.Face3(0,1,7), //base edge left
+            new THREE.Face3(0,6,7),
+            new THREE.Face3(5,4,10), //base edge right
+            new THREE.Face3(5,11,10),
+            new THREE.Face3(1,7,9), //base center left
+            new THREE.Face3(1,3,9),
+            new THREE.Face3(9,3,4), //base center right
+            new THREE.Face3(9,10,4),
+            new THREE.Face3(13,7,9), //ceiling center left
+            new THREE.Face3(13,10,9), //ceiling center right
+            new THREE.Face3(6,12,13), //ceiling front left
+            new THREE.Face3(6,7,13),
+            new THREE.Face3(11,10,13), //ceiling front right
+            new THREE.Face3(11,15,13),
+            new THREE.Face3(12,13,15), //ceiling top
+            new THREE.Face3(12,14,15),
         );
         this.wallceilingcorner.geom.computeFaceNormals();
     }
