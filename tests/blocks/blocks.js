@@ -67,6 +67,10 @@ let blocks = {
         geom: null,
         material: null
     },
+    none: {
+        geom: null,
+        material: null
+    },
     makeGeometries: function () {
         this.flat.geom.vertices.push(
             new THREE.Vector3(0,0,0), //0

@@ -17,7 +17,7 @@
             document.body.appendChild( renderer.domElement );
 
             const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
-            camera.position.set( 10, 5, -2);
+            camera.position.set( 10, 2, -2);
             camera.lookAt( 0, 0, 0 );
 
             const scene = new THREE.Scene();
@@ -30,7 +30,7 @@
 
             blocks.makeGeometries();
 
-            for (let i = 0; i < Object.keys(blocks).length; i++) {
+            /*for (let i = 0; i < Object.keys(blocks).length; i++) {
                 let blockPrototype = blocks[Object.keys(blocks)[i]];
                 if (blockPrototype.geom != null) {
                     let block = new THREE.Mesh(blockPrototype.geom, blockPrototype.material);
@@ -38,15 +38,32 @@
                     block.position.z = -(i % 4) * 1.5;
                     block.position.x = Math.floor(i / 4) * 1.5;
                 }
+            }*/
+            let size = 4;
+            let grid = new Array(size);
+            for (let x = 0; x < size; x++) {
+                grid[x] = new Array(size);
+                for (let y = 0; y < size; y++) {
+                    grid[x][y] = new Array(size);
+                    for (let z = 0; z < size; z++) {
+                        grid[x][y][z] = Object.assign({}, );
+                        let blockPrototype = blocks[Object.keys(blocks)[Math.floor(Math.random()*17)]];
+                        if (blockPrototype.geom != null) {
+                            let block = new THREE.Mesh(blockPrototype.geom, blockPrototype.material);
+                            scene.add(block);
+                            block.position.set(x,y,z);
+                        }
+                    }
+                }
             }
 
             function animate() {
                 requestAnimationFrame( animate );
                 renderer.render( scene, camera );
-                camera.position.z = (Math.cos(t)*8) - 1.75;
-                camera.position.x = (Math.sin(t)*8) + 2.75;
+                camera.position.z = (Math.cos(t)*8) + 2;
+                camera.position.x = (Math.sin(t)*8) + 2;
                 t+=0.01;
-                camera.lookAt(2.75,0,-1.75);
+                camera.lookAt(2,2,2);
             }
             animate();
 
@@ -55,6 +72,8 @@
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             }, false)
+
+
 		</script>
 	</body>
 </html>
