@@ -58,4 +58,3 @@ for (let n_block = 0; n_block < Object.keys(prototypes).length; n_block++) {
         }
     }
 }
-console.log(prototypes);

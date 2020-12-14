@@ -13,6 +13,7 @@
         <script src="blockModels.js"></script>
         <script src="blockPrototypes.js"></script>
         <script src="initNeighbors.js"></script>
+        <script src="wfca.js"></script>
 		<script>
 			const renderer = new THREE.WebGLRenderer();
             renderer.setSize( window.innerWidth, window.innerHeight );
@@ -39,15 +40,15 @@
                     block.position.x = Math.floor(i / 4) * 1.5;
                 }
             }*/
-            let size = 4;
-            let grid = new Array(size);
+            //let size = 4;
+            let blockgrid = new Array(size);
             for (let x = 0; x < size; x++) {
-                grid[x] = new Array(size);
+                blockgrid[x] = new Array(size);
                 for (let y = 0; y < size; y++) {
-                    grid[x][y] = new Array(size);
+                    blockgrid[x][y] = new Array(size);
                     for (let z = 0; z < size; z++) {
                         let blockPrototype = prototypes[Object.keys(prototypes)[Math.floor(Math.random()*(Object.keys(prototypes).length))]];
-                        grid[x][y][z] = Object.assign({}, blockPrototype);
+                        blockgrid[x][y][z] = Object.assign({}, blockPrototype);
                         if (blockPrototype.geom != null) {
                             let block = new THREE.Mesh(blockPrototype.geom, blockPrototype.material);
                             scene.add(block);
