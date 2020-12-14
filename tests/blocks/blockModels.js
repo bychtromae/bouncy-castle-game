@@ -1,4 +1,4 @@
-let blocks = {
+let blockModels = {
     flat: {
         geom: new THREE.Geometry(),
         material: new THREE.MeshStandardMaterial({side: THREE.DoubleSide})
@@ -667,4 +667,4 @@ let blocks = {
     }
 }
 
-blocks.makeGeometries();
+blockModels.makeGeometries();

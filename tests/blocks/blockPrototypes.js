@@ -1,7 +1,7 @@
 let prototypes = {
     air: {
-        geom: blocks.flat.geom,
-        material: blocks.flat.material,
+        geom: blockModels.air.geom,
+        material: blockModels.air.material,
         rotation: 0,
         edges: {
             t: "0", //top
@@ -29,8 +29,8 @@ let prototypes = {
         }
     },
     flat: {
-        geom: blocks.flat.geom,
-        material: blocks.flat.material,
+        geom: blockModels.flat.geom,
+        material: blockModels.flat.material,
         rotation: 0,
         edges: {
             t: "0", //top
