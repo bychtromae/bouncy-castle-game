@@ -36,6 +36,5 @@ for (let n_block = 0; n_block < Object.keys(prototypes).length; n_block++) {
     for (let n_face = 0; n_face < Object.keys(proto.edges).length; n_face++) {
         let face = Object.keys(edgeTypes)[n_face];
         edgeTypes[face][proto.edges[face]].push(name);
-        console.log(face,name,edgeTypes[face][proto.edges[face]])
     }
 }
