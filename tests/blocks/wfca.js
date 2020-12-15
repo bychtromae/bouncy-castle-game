@@ -46,7 +46,7 @@ let wfc = {
         let coords = this.get_min_entropy_cell();
         this.collapse_at(coords);
         this.propagate(coords);
-        console.log(this.grid);
+        //console.log(this.grid);
     },
     get_min_entropy_cell: function () {
         let entropies = [];
@@ -120,14 +120,26 @@ let wfc = {
         }
     },
     fill_grid: function () { //fills the grid with high entropy cells, with superpositions of every type of block.
+        //console.log(Object.keys(prototypes));
         for (let x = 0; x < this.grid.length; x++) {
             for (let y = 0; y < this.grid[0].length; y++) {
                 for (let z = 0; z < this.grid[0][0].length; z++) {
-                    this.grid[x][y][z].superpositions = Object.keys(prototypes);
+                    for (let i = 0; i < Object.keys(prototypes).length; i++) {
+                        //console.log(Object.keys(prototypes)[i]);
+                        this.grid[x][y][z].superpositions.push(Object.keys(prototypes)[i]);
+                    }
                 }
             }
         }
+        
+        //let temp1 = this.grid[1][2][3];
+        //console.log(JSON.parse(JSON.stringify(this.grid[1][2][3])));
+        console.log(this.grid[1][2][3]);
+        console.log(JSON.parse(JSON.stringify(this.grid[1][2][3])));
+        console.log(this.grid[1][2][3].superpositions);
+        console.log(this.grid);
     }
 }
 
 wfc.init();
+console.log(wfc.grid);
