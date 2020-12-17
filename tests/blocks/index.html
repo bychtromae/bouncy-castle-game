@@ -10,6 +10,7 @@
 	</head>
 	<body>
         <script src="../../build/three.min.js"></script>
+        <script src="utils.js"></script>
         <script src="blockModels.js"></script>
         <script src="blockPrototypes.js"></script>
         <script src="initNeighbors.js"></script>
@@ -47,7 +48,8 @@
                 for (let y = 0; y < size; y++) {
                     blockgrid[x][y] = new Array(size);
                     for (let z = 0; z < size; z++) {
-                        let blockPrototype = prototypes[Object.keys(prototypes)[Math.floor(Math.random()*(Object.keys(prototypes).length))]];
+                        let blockPrototype = prototypes[wfc.grid[x][y][z].superpositions[0]];
+
                         blockgrid[x][y][z] = Object.assign({}, blockPrototype);
                         if (blockPrototype.geom != null) {
                             let block = new THREE.Mesh(blockPrototype.geom, blockPrototype.material);
