@@ -56,5 +56,63 @@ let prototypes = {
             rb: [], //right back
             b: [] //bottom
         }
+    },
+    side_0: {
+        geom: blockModels.side.geom,
+        material: blockModels.side.material,
+        rotation: 0,
+        edges: {
+            t: "0", //top
+            lf: "4_0", //left front
+            lb: "2_0", //left back
+            rf: "0", //right front
+            rb: "4_0", //right back
+            b: "0" //bottom
+        },
+        edge_neighbor_list: {
+            t: ["0"], //top
+            lf: ["4_0"], //left front
+            lb: ["2_0"], //left back
+            rf: ["0"], //right front
+            rb: ["4_0"], //right back
+            b: ["0"] //bottom
+        },
+        neighbor_list: {
+            t: [], //top
+            lf: [], //left front
+            lb: [], //left back
+            rf: [], //right front
+            rb: [], //right back
+            b: [] //bottom
+        }
+    },
+    side_1: {
+        geom: blockModels.side.geom,
+        material: blockModels.side.material,
+        rotation: 1,
+        edges: {
+            t: "0", //top
+            lf: "0", //left front
+            lb: "4_0", //left back
+            rf: "4_0", //right front
+            rb: "2_0", //right back
+            b: "0" //bottom
+        },
+        edge_neighbor_list: {
+            t: ["0"], //top
+            lf: ["0"], //left front
+            lb: ["4_0"], //left back
+            rf: ["4_0"], //right front
+            rb: ["2_0"], //right back
+            b: ["0"] //bottom
+        },
+        neighbor_list: {
+            t: [], //top
+            lf: [], //left front
+            lb: [], //left back
+            rf: [], //right front
+            rb: [], //right back
+            b: [] //bottom
+        }
     }
 }

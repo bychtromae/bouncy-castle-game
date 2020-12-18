@@ -109,22 +109,25 @@ let wfc = {
                         //log(other_cell.superpositions.length);
                         if (typeof(other_cell) != "undefined") {
                             let neighbors = proto.neighbor_list[face];
+                            console.log(JSON.parse(JSON.stringify(neighbors)));
+                            console.log(JSON.parse(JSON.stringify(other_cell.superpositions)));
                             //log(neighbors);
                             //loop through all the superpositions of the other cell and remove any states that aren't included in the cell's list of possible neighbors.
                             for (let i = 0; i < other_cell.superpositions.length; i++) {
-                                log(neighbors);
+                                /*log(neighbors);
                                 log(other_cell.superpositions[i]);
-                                log(neighbors.includes(other_cell.superpositions[i]));
+                                log(neighbors.includes(other_cell.superpositions[i]));*/
                                 if (!neighbors.includes(other_cell.superpositions[i])) {
                                     //log(other_cell.superpositions);
-                                    other_cell.superpositions.splice(neighbors.indexOf(other_cell.superpositions[i]), 1);
+                                    other_cell.superpositions.splice(neighbors.indexOf(neighbors[i]), 1);
                                     //log(other_cell.superpositions);
                                 }
                                 if (other_cell.superpositions.length == 0) {
                                     other_cell.superpositions.push("air");
                                 }
                             }
-                            
+                            console.log(JSON.parse(JSON.stringify(neighbors)));
+                            console.log(JSON.parse(JSON.stringify(other_cell.superpositions)));
                         }
                     
                         //log(other_cell.superpositions);

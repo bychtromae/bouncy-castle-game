@@ -55,6 +55,15 @@
                             let block = new THREE.Mesh(blockPrototype.geom, blockPrototype.material);
                             scene.add(block);
                             block.position.set(x,y,z);
+                            if (blockPrototype.rotation == 1) {
+                                block.rotation.set(0,Math.PI/2,0);
+                            }
+                            if (blockPrototype.rotation == 2) {
+                                block.rotation.set(0,Math.PI,0);
+                            }
+                            if (blockPrototype.rotation == 3) {
+                                block.rotation.set(0,Math.PI*3/2,0);
+                            }
                         }
                     }
                 }
