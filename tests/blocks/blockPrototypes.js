@@ -71,10 +71,10 @@ let prototypes = {
         },
         edge_neighbor_list: {
             t: ["0"], //top
-            lf: ["4_0"], //left front
+            lf: ["4_0","1","2_0"], //left front
             lb: ["2_0"], //left back
             rf: ["0"], //right front
-            rb: ["4_0"], //right back
+            rb: ["4_0","1","2_0"], //right back
             b: ["0"] //bottom
         },
         neighbor_list: {
@@ -101,8 +101,8 @@ let prototypes = {
         edge_neighbor_list: {
             t: ["0"], //top
             lf: ["0"], //left front
-            lb: ["4_0"], //left back
-            rf: ["4_0"], //right front
+            lb: ["4_0","1","2_0"], //left back
+            rf: ["4_0","1","2_0"], //right front
             rb: ["2_0"], //right back
             b: ["0"] //bottom
         },

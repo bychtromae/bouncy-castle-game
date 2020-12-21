@@ -19,16 +19,18 @@ let stack = [];
 let wfc = {
     grid: new Array(size),
     is_collapsed: function () {
+        //console.log(this.grid);
         let n = 0;
         for (let x = 0; x < this.grid.length; x++) {
             for (let y = 0; y < this.grid[0].length; y++) {
                 for (let z = 0; z < this.grid[0][0].length; z++) {
-                    if (this.grid[x][y][z].superpositions.length > 1) {
+                    if (this.grid[x][y][z].superpositions.length != 1) {
                         n++;
                     }
                 }
             }
         }
+        //console.log(n);
         if (n==0) {
             return true;
         }
@@ -36,19 +38,20 @@ let wfc = {
     },
     iterate: function () {
         let coords = this.get_min_entropy_cell();
-        this.collapse_at(coords);
-        this.propagate(coords);
+        if (coords != -1) {
+            this.collapse_at(coords);
+            this.propagate(coords);
+        }
     },
     get_min_entropy_cell: function () {
-        //log(wfc.grid);
         let entropies = [];
         for (let x = 0; x < this.grid.length; x++) {
             for (let y = 0; y < this.grid[0].length; y++) {
                 for (let z = 0; z < this.grid[0][0].length; z++) {
                     let entropy = this.grid[x][y][z].superpositions.length;
-                    //if (entropy > 1) {
+                    if (entropy > 1) {
                         entropies.push(entropy);
-                    //}
+                    }
                 }
             }
         }
@@ -64,22 +67,15 @@ let wfc = {
                 }
             }
         }
-        //console.log(entropies);
-        if (cells.length == 1) {
-            //return the only cell with the lowest entropy
-            //log(cells[0]);
-        } else {
-            //log(cells[Math.floor(Math.random()*(cells.length-1))]);
+        if (cells.length > 1) {
+            if (cells.length == 1) {
+                //return the only cell with the lowest entropy
+                return cells[0];
+            }
+            //return a random cell with the lowest entropy
+            return cells[Math.floor(Math.random()*(cells.length-1))];
         }
-
-        //return a random cell with the lowest entropy
-
-        if (cells.length == 1) {
-            //return the only cell with the lowest entropy
-            return cells[0];
-        }
-        //return a random cell with the lowest entropy
-        return cells[Math.floor(Math.random()*(cells.length-1))];
+        return -1;
     },
     collapse_at: function (coords) {
         //console.log(coords);
@@ -101,14 +97,14 @@ let wfc = {
             let cur_coords = stack.pop();
             //console.log(this.getCell(cur_coords).superpositions[0]);
 
-            let temp = {
+            /*let temp = {
                 t: [], //top
                 lf: [], //left front
                 lb: [], //left back
                 rf: [], //right front
                 rb: [], //right back
                 b: [] //bottom
-            }
+            }*/
 
             for (let n_face = 0; n_face < Object.keys(direction_vectors).length; n_face++) {
                 let face = Object.keys(direction_vectors)[n_face];
@@ -116,16 +112,17 @@ let wfc = {
                 let other_coords = this.getCoords(cur_coords.x+vec.x,cur_coords.y+vec.y,cur_coords.z+vec.z);
 
                 //log(cur_coords);
-                //log(other_coords);
                 if (this.cell_is_defined(cur_coords) && this.cell_is_defined(other_coords)) {
                     //log("passed");
                     let other_cell = this.getCell(other_coords);
+                    //log(other_coords);
+                    //log(other_cell.superpositions);
                     //log(this.getCell(cur_coords));
                     let proto = prototypes[this.getCell(cur_coords).superpositions[0]];
                     let neighbors = proto.neighbor_list[face];
 
-                    temp[face] = [...other_cell.superpositions];
-                    temp[face+"n"] = neighbors;
+                    //temp[face] = [...other_cell.superpositions];
+                    //temp[face+"n"] = neighbors;
 
                     
                     /*log(other_cell.superpositions);
@@ -135,17 +132,14 @@ let wfc = {
                         log(other_poss);
                     }*/
 
-                    log(neighbors);
-                    log(other_cell.superpositions);
+                    //log(neighbors);
+                    //log(other_cell.superpositions);
 
                     let temp_superpositions = [...other_cell.superpositions];
                     if (temp_superpositions.length != 0) {
-                        let n = 0;
                         for (let i = 0; i < temp_superpositions.length; i++) {
                             //the other cell's possibility to remove if it is not contained in the current cell's neighbor list
                             let other_poss = temp_superpositions[i];
-                            log(other_poss);
-                            n++;
                             if (!neighbors.includes(other_poss)) {
                                 this.constrain(other_coords, other_poss);
 
@@ -157,7 +151,8 @@ let wfc = {
                         }
                         //log(n);
                     }
-                    log(other_cell.superpositions);
+                    //log(other_cell.superpositions);
+                    //log(other_cell.superpositions);
                 }
             }
             /*log(temp);
@@ -214,7 +209,7 @@ let wfc = {
             wfc.iterate();
             wfc.renderGrid();
 
-            if (this.is_collapsed) {
+            if (wfc.is_collapsed()) {
                 clearInterval(this);
             }
         }, 100);
