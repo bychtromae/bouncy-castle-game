@@ -102,7 +102,6 @@ let wfc = {
             //console.log(this.getCell(cur_coords).superpositions[0]);
 
             let temp = {
-                c: [this.getCell(cur_coords).superpositions[0]],
                 t: [], //top
                 lf: [], //left front
                 lb: [], //left back
@@ -114,7 +113,7 @@ let wfc = {
             for (let n_face = 0; n_face < Object.keys(direction_vectors).length; n_face++) {
                 let face = Object.keys(direction_vectors)[n_face];
                 let vec = direction_vectors[face];
-                let other_coords = this.getCoords(coords.x+vec.x,coords.y+vec.y,coords.z+vec.z);
+                let other_coords = this.getCoords(cur_coords.x+vec.x,cur_coords.y+vec.y,cur_coords.z+vec.z);
 
                 //log(cur_coords);
                 //log(other_coords);
@@ -126,13 +125,28 @@ let wfc = {
                     let neighbors = proto.neighbor_list[face];
 
                     temp[face] = [...other_cell.superpositions];
-                    temp.c = neighbors;
+                    temp[face+"n"] = neighbors;
 
-                    if (other_cell.superpositions.length != 0) {
-                        for (let i = 0; i < other_cell.superpositions.length; i++) {
+                    
+                    /*log(other_cell.superpositions);
+                    
+                    for (let i = 0; i < other_cell.superpositions.length; i++) {
+                        let other_poss = other_cell.superpositions[i];
+                        log(other_poss);
+                    }*/
+
+                    log(neighbors);
+                    log(other_cell.superpositions);
+
+                    let temp_superpositions = [...other_cell.superpositions];
+                    if (temp_superpositions.length != 0) {
+                        let n = 0;
+                        for (let i = 0; i < temp_superpositions.length; i++) {
                             //the other cell's possibility to remove if it is not contained in the current cell's neighbor list
-                            let other_poss = other_cell.superpositions[i];
-                            if (!neighbors.includes(other_cell)) {
+                            let other_poss = temp_superpositions[i];
+                            log(other_poss);
+                            n++;
+                            if (!neighbors.includes(other_poss)) {
                                 this.constrain(other_coords, other_poss);
 
                                 //json.parse(json.stringify()) ?
@@ -141,10 +155,26 @@ let wfc = {
                                 }
                             }
                         }
+                        //log(n);
                     }
+                    log(other_cell.superpositions);
                 }
             }
-            //log(temp);
+            /*log(temp);
+            for (let n_face = 0; n_face < Object.keys(direction_vectors).length; n_face++) {
+                let face = Object.keys(direction_vectors)[n_face];
+                let vec = direction_vectors[face];
+                let other_coords = this.getCoords(cur_coords.x+vec.x,cur_coords.y+vec.y,cur_coords.z+vec.z);
+                if (this.cell_is_defined(cur_coords) && this.cell_is_defined(other_coords)) {
+                    let other_cell = this.getCell(other_coords);
+                    let proto = prototypes[this.getCell(cur_coords).superpositions[0]];
+                    let neighbors = proto.neighbor_list[face];
+
+                    temp[face] = [...other_cell.superpositions];
+                    temp[face+"n"] = neighbors;
+                }
+            }
+            log(temp);*/
         }
     },
     constrain: function (coords, proto_name) {
