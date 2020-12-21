@@ -12,12 +12,12 @@ let prototypes = {
             b: "0" //bottom
         },
         edge_neighbor_list: {
-            t: ["0","1"], //top
-            lf: ["0","1"], //left front
-            lb: ["0","1"], //left back
-            rf: ["0","1"], //right front
-            rb: ["0","1"], //right back
-            b: ["0","1"] //bottom
+            t: ["0","1","2_0"], //top
+            lf: ["0","1","2_0"], //left front
+            lb: ["0","1","2_0"], //left back
+            rf: ["0","1","2_0"], //right front
+            rb: ["0","1","2_0"], //right back
+            b: ["0","1","2_0"] //bottom
         },
         neighbor_list: {
             t: [], //top
@@ -27,7 +27,7 @@ let prototypes = {
             rb: [], //right back
             b: [] //bottom
         }
-    },
+    }/*,
     flat: {
         geom: blockModels.flat.geom,
         material: blockModels.flat.material,
@@ -56,7 +56,7 @@ let prototypes = {
             rb: [], //right back
             b: [] //bottom
         }
-    },
+    }*//*,
     side_0: {
         geom: blockModels.side.geom,
         material: blockModels.side.material,
@@ -114,5 +114,5 @@ let prototypes = {
             rb: [], //right back
             b: [] //bottom
         }
-    }
+    }*/
 }

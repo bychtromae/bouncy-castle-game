@@ -11,12 +11,13 @@
 	<body>
         <script src="../../build/three.min.js"></script>
         <script src="utils.js"></script>
+        <script src="scene.js"></script>
         <script src="blockModels.js"></script>
         <script src="blockPrototypes.js"></script>
         <script src="initNeighbors.js"></script>
         <script src="wfca.js"></script>
 		<script>
-			const renderer = new THREE.WebGLRenderer();
+			/*const renderer = new THREE.WebGLRenderer();
             renderer.setSize( window.innerWidth, window.innerHeight );
             document.body.appendChild( renderer.domElement );
 
@@ -32,16 +33,6 @@
             
             let t = 0;
 
-            /*for (let i = 0; i < Object.keys(blocks).length; i++) {
-                let blockPrototype = blocks[Object.keys(blocks)[i]];
-                if (blockPrototype.geom != null) {
-                    let block = new THREE.Mesh(blockPrototype.geom, blockPrototype.material);
-                    scene.add(block);
-                    block.position.z = -(i % 4) * 1.5;
-                    block.position.x = Math.floor(i / 4) * 1.5;
-                }
-            }*/
-            //let size = 4;
             let blockgrid = new Array(size);
             for (let x = 0; x < size; x++) {
                 blockgrid[x] = new Array(size);
@@ -49,6 +40,7 @@
                     blockgrid[x][y] = new Array(size);
                     for (let z = 0; z < size; z++) {
                         let blockPrototype = prototypes[wfc.grid[x][y][z].superpositions[0]];
+                        console.log(wfc.grid[x][y][z].superpositions[0]);
 
                         blockgrid[x][y][z] = Object.assign({}, blockPrototype);
                         if (blockPrototype.geom != null) {
@@ -83,7 +75,7 @@
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
-            }, false)
+            }, false)*/
 
 
 		</script>
